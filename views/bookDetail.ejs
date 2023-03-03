@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="ui grid container">
+        <% if (data.length> 0) { %>
+          <% for(let book of data) {%>
+            <div class="four wide column">
+            <div class="ui cards">
+              <div class="card">
+                <div class="content">
+                  <div class="header">
+                    <%= book.title %>
+                  </div>
+                  <div class="meta">
+                    <%= book.author %>
+                  </div>
+                  <div class="description">
+                    <%= book.subtitle %>
+                  </div>
+                </div>
+                <div class="extra content">
+                  <div class="ui two buttons">
+                    <form action="/book/<%= book.isbn %>" method="post">
+                      <input type="hidden" name="isbn" value="<%= book.isbn %>">
+                     <button class="ui basic green button">Show</button>
+                    </form>
+                    <form action="/" method="post">
+                      <input type="hidden" name="isbn" value="<%= book.isbn %>">
+                      <button class="ui basic red button">Delete</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <% } %>
+              <% } %>
+            </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+    
+</head>
+<body>
+  <div class="ui grid container">
+    <% if (books?.length> 0) { %>
+      <% for(let book of books) {%>
+        <div class="four wide column">
+        <div class="ui cards">
+          <div class="card">
+            <div class="content">
+              <div class="header">
+                <%= book.title %>
+              </div>
+              <div class="meta">
+                <%= book.author %>
+              </div>
+              <div class="description">
+                <%= book.subtitle %>
+              </div>
+            </div>
+            <div class="extra content">
+              <div class="ui two buttons">
+                <form action="/book" method="post">
+                  <input type="hidden" name="isbn" value="<%= book.isbn %>">
+                 <button class="ui basic green button">Show</button>
+                </form>
+                <form action="/book" method="post">
+                  <input type="hidden" name="isbn" value="<%= book.isbn %>">
+                  <button class="ui basic red button">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <% } %>
+          <% } %>
+        </div>
+</body>
+</html>
